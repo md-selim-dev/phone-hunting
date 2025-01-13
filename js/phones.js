@@ -34,8 +34,4 @@ const displayPhones = (phones) => {
 
   })
 }
-
-
-loadPhone()
-
-
+loadPhone();
