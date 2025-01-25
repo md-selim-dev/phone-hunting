@@ -1,47 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Hunting using API</title>
-  <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/661/236/png-clipart-computer-icons-smartphone-mobile-app-file-mobile-smartphone-icon-wikimedia-commons-white-and-teal-phone-logo-miscellaneous-blue.png" type="image/x-icon">
+  <link rel="shortcut icon"
+    href="https://e7.pngegg.com/pngimages/661/236/png-clipart-computer-icons-smartphone-mobile-app-file-mobile-smartphone-icon-wikimedia-commons-white-and-teal-phone-logo-miscellaneous-blue.png"
+    type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/01137f08c2.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-  <header>
-    <h2 class="text-4xl text-center p-4 font-extrabold uppercase">Hunting Phone</h2>
+<body class="font-poppins">
+  <header class="bg-[#cad0e4] pb-72">
+    <nav class="px-32">
+      <div class="navbar">
+        <div class="flex-1">
+          <a href="#" class="text-3xl font-bold text-[#403F3F]">Hot Gadgets</a>
+        </div>
+        <div class="flex-none">
+          <button class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Sign Up</button>
+        </div>
+      </div>
+    </nav>
+    <!-- header container -->
+    <div class="flex justify-center items-center text-center">
+      <div class="mx-96">
+        <h1 class="text-3xl font-bold text-[#100F0F] mb-4">Apple Iphone 13 Pro Max</h1>
+        <p class="mb-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+          alteration in some form, by injected humou.</p>
+        <button class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Buy Now</button>
+      </div>
+    </div>
   </header>
 
   <main class="m-12">
-    <!-- search field -->
-     <section class="bg-gray-100 p-4 my-4 rounded-lg w-full flex gap-4">
-      <input class="input input-bordered" type="text" placeholder="Search..." name="" id="search-field">
-      <button onclick="handleSearch()" class="btn btn-default text-md btn-outline">Search</button>
+    <div class="flex justify-center px-56 -mt-80">
+      <img src="images/Group 48095420.png" alt="">
+    </div>
+    <!-- Search Field -->
+    <section class="mx-32 px-32 my-14">
+      <div class="flex items-center border-2 rounded-lg bg-gray-100 pl-2">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="search-field" class="outline-none bg-gray-100 pl-2 p-1 w-full" type="text" placeholder="Search your phone">
+        <button onclick="handleSearch()" class="btn bg-[#0D6EFD] border-none outline-none text-lg text-white hover:bg-[#0d6dfdb0]">Search</button>
+      </div>
+    </section>
 
-      <!-- recap search field -->
-       <input type="text" name="" id="search-field2" placeholder="Search Here...." class="input input-bordered">
-       <button onclick="handleSearch2()" class="btn btn-success text-md btn-outline">Another Search</button>
-     </section>
-
-
-     <!-- show loader -->
-     <div id="loading-spinner" class="text-center my-32 hidden">
-      <span class="loading loading-dots loading-lg text-info"></span>
-     </div>
-
-     <!-- Show search result -->
+    <!-- Show search result -->
     <section class="container mx-auto">
+
+      <!-- show loader -->
+      <div id="loading-spinner" class="text-center my-32 hidden">
+        <span class="loading loading-dots loading-lg text-info"></span>
+      </div>
+
       <div id="phones-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       </div>
       <!-- Show all Button -->
       <div id="show-all-container" class="flex justify-center hidden mt-3">
-        <button class="btn btn-accent text-center ">Show All</button>
+        <button onclick="handleShowAll()" class="btn btn-accent">Show All</button>
       </div>
     </section>
+
+    <!-- Show details modal -->
+    <!-- Open the modal using ID.showModal() method -->
+
+    <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <!-- indivitual phone detail container -->
+        <div id="show-detail-container">
+
+        </div>
+
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+
   </main>
 
   <footer>
@@ -50,4 +94,5 @@
 
   <script src="js/phones.js"></script>
 </body>
+
 </html>
