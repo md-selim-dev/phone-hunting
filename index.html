@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Hunting using API</title>
+  <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/661/236/png-clipart-computer-icons-smartphone-mobile-app-file-mobile-smartphone-icon-wikimedia-commons-white-and-teal-phone-logo-miscellaneous-blue.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -15,9 +16,30 @@
   </header>
 
   <main class="m-12">
-    <section>
+    <!-- search field -->
+     <section class="bg-gray-100 p-4 my-4 rounded-lg w-full flex gap-4">
+      <input class="input input-bordered" type="text" placeholder="Search..." name="" id="search-field">
+      <button onclick="handleSearch()" class="btn btn-default text-md btn-outline">Search</button>
+
+      <!-- recap search field -->
+       <input type="text" name="" id="search-field2" placeholder="Search Here...." class="input input-bordered">
+       <button onclick="handleSearch2()" class="btn btn-success text-md btn-outline">Another Search</button>
+     </section>
+
+
+     <!-- show loader -->
+     <div id="loading-spinner" class="text-center my-32 hidden">
+      <span class="loading loading-dots loading-lg text-info"></span>
+     </div>
+
+     <!-- Show search result -->
+    <section class="container mx-auto">
       <div id="phones-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+      </div>
+      <!-- Show all Button -->
+      <div id="show-all-container" class="flex justify-center hidden mt-3">
+        <button class="btn btn-accent text-center ">Show All</button>
       </div>
     </section>
   </main>
@@ -28,5 +50,4 @@
 
   <script src="js/phones.js"></script>
 </body>
-
 </html>
