@@ -14,7 +14,7 @@
 </head>
 
 <body class="font-poppins">
-  <header class="bg-[#cad0e4] pb-72">
+  <header class="bg-[#f5f6fa] pb-72">
     <nav class="px-32">
       <div class="navbar">
         <div class="flex-1">
@@ -44,8 +44,10 @@
     <section class="mx-32 px-32 my-14">
       <div class="flex items-center border-2 rounded-lg bg-gray-100 pl-2">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="search-field" class="outline-none bg-gray-100 pl-2 p-1 w-full" type="text" placeholder="Search your phone">
-        <button onclick="handleSearch()" class="btn bg-[#0D6EFD] border-none outline-none text-lg text-white hover:bg-[#0d6dfdb0]">Search</button>
+        <input id="search-field" class="outline-none bg-gray-100 pl-2 p-1 w-full" type="text"
+          placeholder="Search your phone">
+        <button onclick="handleSearch()"
+          class="btn bg-[#0D6EFD] border-none outline-none text-lg text-white hover:bg-[#0d6dfdb0]">Search</button>
       </div>
     </section>
 
@@ -61,7 +63,7 @@
 
       </div>
       <!-- Show all Button -->
-      <div id="show-all-container" class="flex justify-center hidden mt-3">
+      <div id="show-all-container" class="flex justify-center hidden mt-6">
         <button onclick="handleShowAll()" class="btn btn-accent">Show All</button>
       </div>
     </section>
@@ -88,8 +90,56 @@
 
   </main>
 
-  <footer>
-
+  <footer class="p-40 bg-[#f5f6fa] ]">
+    <div>
+      <div>
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-bold mb-1">Hot Gadgets</h1>
+            <p>You can definitely work.</p>
+          </div>
+          <div class="flex gap-4 items-center">
+            <i class="fa-brands fa-facebook text-blue-600"></i>
+            <i class="fa-brands fa-x-twitter text-blue-300"></i>
+            <i class="fa-brands fa-instagram text-ellipsis text-[#D82D7E]"></i>
+            <button class="btn btn-accent btn-outline">Join Premium</button>
+          </div>
+        </div>
+          <div class="my-8">
+            <hr>
+          </div>
+        <div class="flex justify-between items-center">
+          <div class="flex flex-col gap-2">
+            <a href="#">Product</a>
+            <a href="#">Browse jobs</a>
+            <a href="#">Remote jobs</a>
+            <a href="#">Startup jobs</a>
+            <a href="#">Company jobs</a>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="#">Populer</a>
+            <a href="#">UI/UX Design</a>
+            <a href="#">Product Design</a>
+            <a href="#">Backend Developer</a>
+            <a href="#">Frontend Developer</a>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="#">Resource</a>
+            <a href="#">FAQ</a>
+            <a href="#">Support</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="#">Company</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Career Tips</a>
+            <a href="#">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="js/phones.js"></script>
