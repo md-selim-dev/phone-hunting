@@ -1,128 +1,130 @@
-
-
-
-
-const loadPhone = async (searchText = 'iphone', isShowAll) => {
-  const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
+const loadPhone = async (inputText, isShowAll) => {
+  const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
+  const res = await fetch(url);
   const data = await res.json();
-  const phones = data.data;
-  // console.log(phones)
-  displayPhones(phones, isShowAll);
+  const phones = data.data
+  if (!inputText) {
+    displayPhones(isShowAll)
+  } else {
+    displayPhones(phones, isShowAll)
+  }
+
 }
+
+
 const displayPhones = (phones, isShowAll) => {
   // console.log(phones)
-  const phonesCardContainer = document.getElementById('phones-card-container');
 
-  // clear phone container cards before adding new cards
-  phonesCardContainer.textContent = "";
+  const phoneCardContainer = document.getElementById('phones-card-container');
+  phoneCardContainer.textContent = '';
 
-  // display show all button if there are more than 12 phones
-  const showAllContainer = document.getElementById('show-all-container');
-  if(phones.length > 12 && !isShowAll){
-    showAllContainer.classList.remove('hidden');
-  }else{
-    showAllContainer.classList.add('hidden')
-  }
-  // console.log('is show all', isShowAll)
-  // display only first 12 phones if not show all
-  if(!isShowAll){
-    phones = phones.slice(0,12)
-  }
+  const showAllBtnContainer = document.getElementById('show-all-btn-container');
 
-  phones.forEach(phone => {
-    // console.log(phone)
-    const phoneCard = document.createElement('div');
-    phoneCard.classList = `card bg-gray-100 max-w-96 shadow-xl`;
-    phoneCard.innerHTML = `
+  if (!phones) {
+    phoneCardContainer.textContent = 'Enter a valid string'
+    showAllBtnContainer.classList.add('hidden')
+  } else {
 
-    <figure class="px-10 pt-10">
-      <img
-        src="${phone.image}"
-        alt="phone-image"
-      class="rounded-xl" />
-    </figure>
-    <div class="card-body items-center text-center">
-    <h2 class="font-bold text-[#403F3F] text-2xl">${phone.brand}</h2>
-    <h3 class="font-bold text-[#403F3F] text-2xl">${phone.phone_name}</h3>
-    <p>There are many variations of passages of available, but the majority have suffered</p>
-    <b class="font-bold text-[#403F3F]">$999</b>
-    <div class="card-actions">
-      <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
-    </div>
-  </div>
-    `;
-    phonesCardContainer.appendChild(phoneCard)
-  });
-  toggleLoadingSpinner(false)
-}
 
-// handle show details
-const handleShowDetails = async (id) => {
-  console.log('clicked show details', id);
-  // load indivisual phone data
-  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
-  const data = await res.json();
-  const phone = data.data;
-  
-  showPhoneDetails(phone)
-}
+    if (phones.length > 9 && !isShowAll) {
+      phones = phones.slice(0, 9);
+      showAllBtnContainer.classList.remove('hidden')
+    } else {
+      showAllBtnContainer.classList.add('hidden')
+    }
 
-// show indivitual phone details
-const showPhoneDetails = (phone) =>{
-  console.log(phone)
-
-  const showDeailContainer = document.getElementById('show-detail-container');
-  showDeailContainer.classList = 'flex flex-col gap-2';
-  showDeailContainer.innerHTML = `
-    <div class="flex justify-center">
-      <div class="bg-[#cad0e4] px-20 py-6 rounded-xl mb-6">
-        <img src="${phone.image}"/>
+    phones.forEach(phone => {
+      console.log(phone)
+      const phoneCard = document.createElement('div');
+      phoneCard.classList = 'card bg-gray-100 px-4 py-6 shadow-xl text-center';
+      phoneCard.innerHTML = `
+      
+  <figure>
+    <img
+      src="${phone.image}"
+      alt="${phone.slug}" />
+      </figure>
+      <div class="card-body items-center">
+        <h2 class="card-title font-bold text-[black]">${phone.phone_name}</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions">
+          <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-info mt-4">Show Details</button>
+        </div>
       </div>
-    </div>
-    <h3 class="text-lg font-bold">${phone.name}</h3>
-    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layou t.</p>
-    <p><span>Storage: </span>${phone?.mainFeatures?.storage}</p>
-    <p><span>Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
-    <p><span>Chipset: </span>${phone?.mainFeatures?.chipSet ? phone.mainFeatures.chipSet : ''}</p>
-    <p><span>Memory: </span>${phone?.mainFeatures?.memory}</p>
-    <p><span>Slug: </span>${phone?.slug}</p>
-    <p><span>Release Date: </span> ${phone?.releaseDate || ''}</p>
-    <p><span>Brand: </span>${phone?.brand ? phone.brand : ''}</p>
-    <p><span>GPS: </span>${phone?.others?.GPS || ''}</p>
-    
-  `
-  show_details_modal.showModal()
-  
+
+    `;
+      phoneCardContainer.appendChild(phoneCard)
+
+    })
+  }
+  toggleLoadingSpinner(false)
+
 }
 
-const handleSearch = (isShowAll) => {
+let lastInputText = 'huawei';
+
+const handleSearch = () => {
   toggleLoadingSpinner(true)
-  const searchField = document.getElementById('search-field');
-  const searchText = searchField.value;
-  console.log(searchText);
-  loadPhone(searchText, isShowAll);
-}
-// recap search button
+  const inputField = document.getElementById('input-field');
+  const inputText = inputField.value;
+  lastInputText = inputText;
+  console.log(inputText)
+  loadPhone(inputText)
+  inputField.value = ''
 
-// const handleSearch2 = () => {
-//   toggleLoadingSpinner(true)
-//   const searchField = document.getElementById('search-field2');
-//   const searchText = searchField.value;
-//   loadPhone(searchText)
-// }
+}
 
 const toggleLoadingSpinner = (isLoading) => {
-  loadingSpinner = document.getElementById('loading-spinner');
-  if(isLoading){
-    loadingSpinner.classList.remove('hidden')
-  }else{
-    loadingSpinner.classList.add('hidden')
+  const loaderContainer = document.getElementById('loading-spinner-container');
+  if (isLoading) {
+    loaderContainer.classList.remove('hidden')
+  } else {
+    loaderContainer.classList.add('hidden')
   }
 }
 
+
 const handleShowAll = () => {
-  handleSearch(true);
-  
+  loadPhone(lastInputText, true)
 }
 
-loadPhone();
+const handleShowDetails = async (id) => {
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  const data = await res.json();
+  const details = data.data;
+  displayPhoneDetails(details)
+
+}
+
+const displayPhoneDetails = (phone) => {
+  console.log(phone)
+
+  const phoneDetailsContainer = document.getElementById('phone-details-container');
+  phoneDetailsContainer.innerHTML = `
+  <figure class="flex justify-center bg-white rounded-xl mb-4">
+    <img src="${phone.image}"/>
+  </figure>
+  <h3 class="text-lg font-bold">${phone.name}</h3>
+  <p class="py-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layou t.</p>
+  <p class="py-2"><b>Storage: </b>${phone?.mainFeatures?.storage || 'No Data Available'}</p>
+  <p class="py-2"><b>Display Size: </b>${phone?.mainFeatures?.displaySize || 'No Data Available'}</p>
+  <p class="py-2"><b>Chipset: </b>${phone?.mainFeatures?.chipSet || 'No Data Available'}</p>
+  <p class="py-2"><b>Memory: </b>${phone?.mainFeatures?.memory || 'No Data Available'}</p>
+  <p class="py-2"><b>Slug: </b>${phone?.slug || 'No Data Available'}</p>
+  <p class="py-2"><b>Release Date: </b>${phone?.releaseDate || 'No Data Available'}</p>
+  <p class="py-2"><b>Brand: </b>${phone?.brand || 'No Data Available'}</p>
+  <p class="py-2"><b>GPS: </b>${phone?.others?.GPS || 'No Data Available'}</p>  
+  
+  <div class="modal-action">
+   <form method="dialog">
+    <!-- if there is a button in form, it will close the modal -->
+    <button class="btn bg-gray-50 btn-error">Close</button>
+   </form>
+  </div>
+  `
+
+  phone_details_modal.showModal()
+}
+
+
+loadPhone(lastInputText)

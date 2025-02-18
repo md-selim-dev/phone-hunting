@@ -36,58 +36,54 @@
     </div>
   </header>
 
-  <main class="m-12">
+  <main class="container mx-auto my-6">
     <div class="flex justify-center px-56 -mt-80">
       <img src="images/Group 48095420.png" alt="">
     </div>
-    <!-- Search Field -->
-    <section class="mx-32 px-32 my-14">
-      <div class="flex items-center border-2 rounded-lg bg-gray-100 pl-2">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="search-field" class="outline-none bg-gray-100 pl-2 p-1 w-full" type="text"
-          placeholder="Search your phone">
-        <button onclick="handleSearch()"
-          class="btn bg-[#0D6EFD] border-none outline-none text-lg text-white hover:bg-[#0d6dfdb0]">Search</button>
+    <!-- search area -->
+    <section class="my-6 bg-gray-50 p-4 rounded-xl">
+      <div class="join w-full flex justify-center">
+        <label class="input input-bordered join-item flex items-center gap-2 w-2/3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 opacity-70">
+            <path fill-rule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clip-rule="evenodd" />
+          </svg>
+          <input id="input-field" type="text" class="grow" placeholder="Search" />
+        </label>
+        <button onclick="handleSearch()" class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0] join-item px-8">Search</button>
       </div>
     </section>
 
-    <!-- Show search result -->
-    <section class="container mx-auto">
+    <!-- phones card container -->
+    <section>
 
-      <!-- show loader -->
-      <div id="loading-spinner" class="text-center my-32 hidden">
-        <span class="loading loading-dots loading-lg text-info"></span>
-      </div>
+      <section id="loading-spinner-container" class="text-center my-20 hidden">
+        <span class="loading loading-spinner text-success"></span>
+      </section>
 
-      <div id="phones-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="phones-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      </div>
-      <!-- Show all Button -->
-      <div id="show-all-container" class="flex justify-center hidden mt-6">
-        <button onclick="handleShowAll()" class="btn btn-accent">Show All</button>
       </div>
     </section>
 
-    <!-- Show details modal -->
-    <!-- Open the modal using ID.showModal() method -->
+    <!-- modal container -->
+    <section>
+      <dialog id="phone_details_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-gray-100">
+          <div id="phone-details-container" class="">
 
-    <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box">
-        <!-- indivitual phone detail container -->
-        <div id="show-detail-container">
-
+            <div id="others-container">
+  
+            </div>
+          </div>
         </div>
+      </dialog>
+    </section>
 
-        <div class="modal-action">
-          <form method="dialog">
-            <!-- if there is a button in form, it will close the modal -->
-            <button class="btn">Close</button>
-          </form>
-        </div>
-      </div>
-    </dialog>
-
-
+    <section id="show-all-btn-container" class="text-center my-10 hidden">
+      <button onclick="handleShowAll()" class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Show All</button>
+    </section>
   </main>
 
   <footer class="p-40 bg-[#f5f6fa] ]">
