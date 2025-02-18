@@ -6,13 +6,13 @@ const loadPhone = async (inputText, isShowAll) => {
   if (!inputText) {
     displayPhones(isShowAll)
   } else {
-    displayPhones(phones, isShowAll)
+    displayPhones(phones, isShowAll, inputText)
   }
 
 }
 
 
-const displayPhones = (phones, isShowAll) => {
+const displayPhones = (phones, isShowAll, inputText) => {
   // console.log(phones)
 
   const phoneCardContainer = document.getElementById('phones-card-container');
@@ -21,10 +21,14 @@ const displayPhones = (phones, isShowAll) => {
   const showAllBtnContainer = document.getElementById('show-all-btn-container');
 
   if (!phones) {
-    phoneCardContainer.textContent = 'Enter a valid string'
+    phoneCardContainer.textContent = 'Enter a value'
     showAllBtnContainer.classList.add('hidden')
   } else {
 
+    if(phones.length === 0){
+      phoneCardContainer.textContent = `Couldn't find data for: ${inputText}`;
+      showAllBtnContainer.classList.add('hidden')
+    }
 
     if (phones.length > 9 && !isShowAll) {
       phones = phones.slice(0, 9);
@@ -34,12 +38,11 @@ const displayPhones = (phones, isShowAll) => {
     }
 
     phones.forEach(phone => {
-      console.log(phone)
       const phoneCard = document.createElement('div');
       phoneCard.classList = 'card bg-gray-100 px-4 py-6 shadow-xl text-center';
       phoneCard.innerHTML = `
       
-  <figure>
+  <figure class="bg-white rounded-xl mb-4 py-6">
     <img
       src="${phone.image}"
       alt="${phone.slug}" />
@@ -68,7 +71,6 @@ const handleSearch = () => {
   const inputField = document.getElementById('input-field');
   const inputText = inputField.value;
   lastInputText = inputText;
-  console.log(inputText)
   loadPhone(inputText)
   inputField.value = ''
 
@@ -97,7 +99,6 @@ const handleShowDetails = async (id) => {
 }
 
 const displayPhoneDetails = (phone) => {
-  console.log(phone)
 
   const phoneDetailsContainer = document.getElementById('phone-details-container');
   phoneDetailsContainer.innerHTML = `
