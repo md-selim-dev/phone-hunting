@@ -101,7 +101,7 @@ const displayPhoneDetails = (phone) => {
 
   const phoneDetailsContainer = document.getElementById('phone-details-container');
   phoneDetailsContainer.innerHTML = `
-  <figure class="flex justify-center bg-white rounded-xl mb-4">
+  <figure class="flex justify-center bg-white rounded-xl mb-4 py-6">
     <img src="${phone.image}"/>
   </figure>
   <h3 class="text-lg font-bold">${phone.name}</h3>
