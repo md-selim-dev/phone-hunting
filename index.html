@@ -15,10 +15,10 @@
 
 <body class="font-poppins">
   <header class="bg-[#f5f6fa] pb-72">
-    <nav class="px-32">
-      <div class="navbar">
-        <div class="flex-1">
-          <a href="#" class="text-3xl font-bold text-[#403F3F]">Hot Gadgets</a>
+    <nav class="px-2 md:px-32">
+      <div class="navbar flex justify-between">
+        <div class="flex-none md:flex-1">
+          <a href="#" class="btn btn-ghost text-2xl md:text-3xl font-bold text-[#403F3F]">Hot Gadgets</a>
         </div>
         <div class="flex-none">
           <button class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Sign Up</button>
@@ -26,8 +26,8 @@
       </div>
     </nav>
     <!-- header container -->
-    <div class="flex justify-center items-center text-center">
-      <div class="mx-96">
+    <div class="flex justify-center items-center text-center mt-6">
+      <div class="mx-4 md:mx-32 lg:mx-96">
         <h1 class="text-3xl font-bold text-[#100F0F] mb-4">Apple Iphone 13 Pro Max</h1>
         <p class="mb-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered
           alteration in some form, by injected humou.</p>
@@ -37,7 +37,7 @@
   </header>
 
   <main class="container mx-auto my-6">
-    <div class="flex justify-center px-56 -mt-80">
+    <div class="flex justify-center px-2 md:px-32 lg:px-56 -mt-72 md:-mt-72 lg:-mt-80">
       <img src="images/Group 48095420.png" alt="">
     </div>
     <!-- search area -->
@@ -51,13 +51,14 @@
           </svg>
           <input id="input-field" type="text" class="grow" placeholder="Search" />
         </label>
-        <button onclick="handleSearch()" class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0] join-item px-8">Search</button>
+        <button onclick="handleSearch()"
+          class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0] join-item px-8">Search</button>
       </div>
     </section>
 
     <!-- phones card container -->
-    <section>
-
+    <section class="px-2">
+      <!-- loading spinner -->
       <section id="loading-spinner-container" class="text-center my-20 hidden">
         <span class="loading loading-spinner text-success"></span>
       </section>
@@ -74,7 +75,7 @@
           <div id="phone-details-container" class="">
 
             <div id="others-container">
-  
+
             </div>
           </div>
         </div>
@@ -82,28 +83,33 @@
     </section>
 
     <section id="show-all-btn-container" class="text-center my-10 hidden">
-      <button onclick="handleShowAll()" class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Show All</button>
+      <button onclick="handleShowAll()"
+        class="btn bg-[#0D6EFD] border-none text-lg text-white hover:bg-[#0d6dfdb0]">Show All</button>
     </section>
   </main>
 
-  <footer class="p-40 bg-[#f5f6fa] ]">
+  <footer class="px-4 py-6 md:p-20 lg:p-40 bg-[#f5f6fa] ]">
     <div>
       <div>
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between md:items-center lg:items-center">
           <div>
-            <h1 class="text-3xl font-bold mb-1">Hot Gadgets</h1>
+            <h1 class="text-xl md:text-3xl font-bold mb-1">Hot Gadgets</h1>
             <p>You can definitely work.</p>
           </div>
-          <div class="flex gap-4 items-center">
-            <i class="fa-brands fa-facebook text-blue-600"></i>
-            <i class="fa-brands fa-x-twitter text-blue-300"></i>
-            <i class="fa-brands fa-instagram text-ellipsis text-[#D82D7E]"></i>
-            <button class="btn btn-accent btn-outline">Join Premium</button>
+          <div class="flex flex-col-reverse md:flex-row gap-4 items-center">
+            <div class="flex gap-4">
+              <a href="#"><i class="fa-brands fa-facebook text-blue-600"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter text-blue-300"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram text-ellipsis text-[#D82D7E]"></i></a>
+            </div>
+            <div>
+              <button class="btn btn-accent btn-outline">Join Premium</button>
+            </div>
           </div>
         </div>
-          <div class="my-8">
-            <hr>
-          </div>
+        <div class="my-8">
+          <hr>
+        </div>
         <div class="flex justify-between items-center">
           <div class="flex flex-col gap-2">
             <a href="#">Product</a>
